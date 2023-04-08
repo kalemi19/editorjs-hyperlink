@@ -1,4 +1,5 @@
 import SelectionUtils from './SelectionUtils';
+import css from './Hyperlink.css';
 
 export default class Hyperlink {
 
