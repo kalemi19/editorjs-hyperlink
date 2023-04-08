@@ -14,9 +14,9 @@ export const EDITOR_JS_TOOLS: { [toolName: string]: ToolConstructable | ToolSett
         class: Hyperlink,
         config: {
             shortcut: 'CMD+L',
-            target: '_blank', // default null
+            target: { name: 'New window', value: '_blank' }, // default null
             rel: 'nofollow', // default null
-            availableTargets: ['_blank', '_self'],
+            availableTargets: [{ name: 'New window', value: '_blank '}, { name: 'Current frame', value: '_self' }],
             availableRels: ['author', 'noreferrer'],
             validate: false
         },
