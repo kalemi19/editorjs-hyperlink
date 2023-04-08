@@ -30,10 +30,10 @@ export default class Hyperlink {
         };
 
         this.targetAttributes = this.config.availableTargets || [
-            '_blank',   // Opens the linked document in a new window or tab
-            '_self',    // Opens the linked document in the same frame as it was clicked (this is default)
-            '_parent',  // Opens the linked document in the parent frame
-            '_top',     // Opens the linked document in the full body of the window
+          { text: 'New window', value: '_blank' },   // Opens the linked document in a new window or tab
+          { text: 'Current frame', value: '_self' },    // Opens the linked document in the same frame as it was clicked (this is default)
+          { text: 'Parent frame', value: '_parent' },  // Opens the linked document in the parent frame
+          { text: 'Top frame', value: '_top' },     // Opens the linked document in the full body of the window
         ];
 
         this.relAttributes = this.config.availableRels || [
@@ -86,17 +86,17 @@ export default class Hyperlink {
         // Target
         this.nodes.selectTarget = document.createElement('select');
         this.nodes.selectTarget.classList.add(this.CSS.selectTarget);
-        this.addOption(this.nodes.selectTarget, this.i18n.t('Select target'), '');
+        this.addOption(this.nodes.selectTarget, { text: this.i18n.t('Select target'), value: '' });
         for (const targetAttribute of this.targetAttributes) {
-            this.addOption(this.nodes.selectTarget, targetAttribute, targetAttribute);
+            this.addOption(this.nodes.selectTarget, targetAttribute);
         }
 
         if (!!this.config.target) {
             if (this.targetAttributes.length === 0) {
-                this.addOption(this.nodes.selectTarget, this.config.target, this.config.target);
+                this.addOption(this.nodes.selectTarget, this.config.target);
             }
 
-            this.nodes.selectTarget.value = this.config.target;
+            this.nodes.selectTarget.value = this.config.target.value;
         }
 
         // Rel
@@ -395,10 +395,10 @@ export default class Hyperlink {
         return icon;
     }
 
-    addOption(element, text, value = null) {
+    addOption(element, object) {
         let option = document.createElement('option');
-        option.text = text;
-        option.value = value;
+        option.text = object.text;
+        option.value = object.value;
         element.add(option);
     }
 
