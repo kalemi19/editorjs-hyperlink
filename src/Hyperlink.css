@@ -52,7 +52,7 @@
     align-items: center;
 }
 .ce-inline-tool-hyperlink--checkbox-input {
-    margin-right: 5px;
+    margin: 0 5px 0 0 !important;
 }
 
 .ce-inline-tool-hyperlink--button {
